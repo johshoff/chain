@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv='Content-type: text/html; charset=utf-8'>
+		<meta charset='utf-8'>
+		<title></title>
+		<!--link rel='stylesheet' type='text/css' href='style.css'></link-->
+		<link rel="stylesheet" href="cal-heatmap.css" />
+		<script type='text/javascript' src='d3.v3.min.js'></script>
+		<script type='text/javascript' src='cal-heatmap.min.js'></script>
+		<style type='text/css'>
+		</style>
+		<script type='text/javascript'>
+		</script>
+		<script type="text/javascript">
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-3865201-3']);
+			_gaq.push(['_trackPageview']);
+		</script>
+	</head>
+	<body>
+
+		<div id="cal-heatmap"></div>
+		<script type="text/javascript">
+			var cal = new CalHeatMap();
+			cal.init({
+				domain: "year",
+				subDomain: "day",
+				range: 1,
+				data: "sources.json"
+			});
+		</script>
+		
+		<script type="text/javascript">
+		if (document.location.hostname !== "0.0.0.0" && document.location.hostname !== "127.0.0.1")
+		{
+			(function() {
+			 	 var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			 	 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			 	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			 })();
+		}
+		</script>
+	</body>
+</html>
