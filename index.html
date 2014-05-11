@@ -21,7 +21,21 @@
 	<body>
 
 		<div id="cal-heatmap"></div>
+		<div id="onClick-placeholder"></div>
 		<script type="text/javascript">
+			function descString(date) {
+				console.log(typeof(descriptions));
+				if (typeof(descriptions) === 'undefined')
+					return '[descriptions not loaded]';
+
+				events = descriptions[(date.toISOString()).substring(0, 10)];
+				str = '';
+				events.forEach(function (ev) {
+					str += ev.repo + ": " + ev.desc + '<br>';
+				});
+				return str;
+			}
+
 			var cal = new CalHeatMap();
 			cal.init({
 				domain: "year",
@@ -29,7 +43,10 @@
 				range: 6,
 				start: new Date('2010-01-01'),
 				verticalOrientation: true,
-				data: "sources.json"
+				data: "sources.json",
+				onClick: function(date, nb) {
+					d3.select("#onClick-placeholder").html(descString(date));
+				}
 			});
 		</script>
 		
@@ -42,6 +59,11 @@
 			 	 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 			 })();
 		}
+		</script>
+		<script type="text/javascript">
+			d3.json('descriptions.json', function(error, json) {
+				descriptions = json;
+			});
 		</script>
 	</body>
 </html>
