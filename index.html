@@ -28,8 +28,12 @@
 				if (typeof(descriptions) === 'undefined')
 					return '[descriptions not loaded]';
 
-				events = descriptions[(date.toISOString()).substring(0, 10)];
-				str = '';
+				var events = descriptions[(date.toISOString()).substring(0, 10)];
+
+				if (typeof(events) === 'undefined')
+					return '';
+
+				var str = '';
 				events.forEach(function (ev) {
 					str += ev.repo + ": " + ev.desc + '<br>';
 				});
@@ -62,6 +66,7 @@
 		</script>
 		<script type="text/javascript">
 			d3.json('descriptions.json', function(error, json) {
+				if (error) return console.warn(error);
 				descriptions = json;
 			});
 		</script>
