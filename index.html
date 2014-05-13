@@ -7,8 +7,13 @@
 		<!--link rel='stylesheet' type='text/css' href='style.css'></link-->
 		<link rel="stylesheet" href="cal-heatmap.css" />
 		<script type='text/javascript' src='d3.v3.min.js'></script>
-		<script type='text/javascript' src='cal-heatmap.min.js'></script>
+		<script type='text/javascript' src='cal-heatmap.js'></script>
 		<style type='text/css'>
+		.main-block {
+			display: inline-block;
+			vertical-align: top;
+			max-width: 50%;
+		}
 		</style>
 		<script type='text/javascript'>
 		</script>
@@ -20,8 +25,8 @@
 	</head>
 	<body>
 
-		<div id="cal-heatmap"></div>
-		<div id="onClick-placeholder"></div>
+		<div class="main-block" id="cal-heatmap"></div>
+		<div class="main-block" id="info"></div>
 		<script type="text/javascript">
 			function descString(date) {
 				console.log(typeof(descriptions));
@@ -48,8 +53,8 @@
 				start: new Date('2010-01-01'),
 				verticalOrientation: true,
 				data: "sources.json",
-				onClick: function(date, nb) {
-					d3.select("#onClick-placeholder").html(descString(date));
+				onMouseOver: function(date, nb) {
+					d3.select("#info").html(descString(date));
 				}
 			});
 		</script>
