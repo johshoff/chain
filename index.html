@@ -46,11 +46,12 @@
 			}
 
 			var cal = new CalHeatMap();
+			var start_year = 2008;
 			cal.init({
 				domain: "year",
 				subDomain: "day",
-				range: 6,
-				start: new Date('2010-01-01'),
+				range: new Date().getFullYear() - start_year + 1,
+				start: new Date(start_year + '-06-01'),
 				verticalOrientation: true,
 				data: "sources.json",
 				onMouseOver: function(date, nb) {
