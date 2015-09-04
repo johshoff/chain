@@ -8,7 +8,7 @@ import os
 
 def get_events(cwd, user):
 	cwd = os.path.expanduser(cwd)
-	args = ['hg', 'log', '--user', user, '--template', '{date|hgdate}\t{date|shortdate}\t{desc}\n']
+	args = ['hg', 'log', '--user', user, '--template', '{date|hgdate}\t{date|shortdate}\t{desc|strip|firstline}\n']
 
 	stdout, stderr = Popen(args, cwd=cwd, stdout=PIPE).communicate()
 
